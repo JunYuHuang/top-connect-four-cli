@@ -60,11 +60,69 @@
 
 ## Expanded Pseudocode / Partial Code
 
-- `Game` class
-  - TODO
-
 - `Player` class
-  - TODO
+  - constructor(game, name, piece)
+    - @`game`: `Game` object / instance
+    - @`name`: string for player e.g. `Player 1`
+    - @`piece`: symbol that represents player's coloured game piece e.g. `:black`
+  - piece()
+    - returns @`piece`
+  - name()
+    - returns @`name`
+  - get_column()
+    - gets human player's column input
+
+- `Game` class
+  - @@`piece_to_string`: hashmap that maps each piece symbol to a string to display or print in the console output
+    - { black: ⚫, white: ⚪, empty: ⭕ }
+  - constructor(player_1_class, player_2_class)
+    - instantiates and assigns player_1_class the following:
+      - `name` = "Player 1"
+      - `piece` = :black
+    - instantiates and assigns player_2_class the following:
+      - `name` = "Player 2"
+      - `piece` = :white
+    - @`players`: array of player class instances
+    - @`current_player_id`: stores the symbol that represents the piece of the player whose turn it currently is
+    - @`rows`: integer set to 6 representing the height of the game board
+    - @`cols`: integer set to 7 representing the width of the game board
+    - @`line_length`: integer set to 4 representing the (min?) size of consecutive same pieces in a line a player needs to win the game
+    - @`board`: 2D array / matrix of symbols that represents the game board
+      - `board.size` = @`rows`
+      - `board[row].size` = @`cols`
+      - `board[row][col]` = a symbol from the set { :black, :white: :empty }
+  - is_valid_placement?(column)
+    - returns false if column is not an integer
+    - returns false if column is out-of-bounds
+    - returns true if column is not full
+  - place_piece(piece, column)
+    - TODO
+  - get_random_player
+    - randomly selects a player object from @`players` and returns it
+  - get_current_player
+    - TODO
+  - did_player_win_horizontal?(player)
+    - TODO
+  - did_player_win_vertical?(player)
+    - TODO
+  - did_player_win_neg_diagonal?(player)
+    - TODO
+  - did_player_win_pos_diagonal?(player)
+    - TODO
+  - did_player_win?(player)
+    - returns true if any of the 4 specialized `did_player_win_`-prefixed  methods return true
+  - switch_player_turn!
+    - TODO
+  - print_board()
+    - TODO
+  - print_player_prompt(is_valid_input, last_input)
+    - TODO
+  - print_game_end()
+    - TODO
+  - print_game_end_screen()
+    - TODO
+  - print_game_turn_screen(is_valid_input, last_input)
+    - TODO
 
 ## UI Design
 
