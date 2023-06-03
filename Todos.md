@@ -1,6 +1,6 @@
 # TODOs
 
-- [ ] Write `GameMock` class to use for `Player` class test stubs
+- [ ] Write `GameMock` test double class to use for `Player` class test stubs
 - [ ] Write tests for `Player` class
 - [ ] Write `Player` class
 - [ ] Write tests for `Game` class
