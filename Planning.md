@@ -69,7 +69,7 @@
     - returns @`piece`
   - name()
     - returns @`name`
-  - get_column()
+  - get_placement()
     - gets human player's column input
 
 - `Game` class
@@ -104,6 +104,9 @@
         - print_game_end()
         - return
       - switch_player_turn!()
+  - add_player(player_class)
+    - returns if there are already 2 players in the game
+    - adds up to 2 players to the @`players` array
   - is_current_player_set?
     - returns true if @`current_player_piece` is `:black` or `:white` else false
   - is_valid_placement?(column)
