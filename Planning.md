@@ -83,7 +83,8 @@
       - `name` = "Player 2"
       - `piece` = :white
     - @`players`: array of player class instances
-    - @`current_player_id`: stores the symbol that represents the piece of the player whose turn it currently is
+    - @`current_player_piece`: set initially to null
+      - stores the symbol that represents the piece of the player whose turn it currently is
     - @`rows`: integer set to 6 representing the height of the game board
     - @`cols`: integer set to 7 representing the width of the game board
     - @`line_length`: integer set to 4 representing the (min?) size of consecutive same pieces in a line a player needs to win the game
@@ -91,12 +92,30 @@
       - `board.size` = @`rows`
       - `board[row].size` = @`cols`
       - `board[row][col]` = a symbol from the set { :black, :white: :empty }
+  - play
+    - while true
+      - if there is no current player set
+        - @`current_player_piece` = get_random_player().piece()
+      - current_player = get_current_player()
+      - place_piece!(current_player)
+      - if did_player_win?(current_player)
+        - clear_console()
+        - print_board()
+        - print_game_end()
+        - return
+      - switch_player_turn!()
+  - is_current_player_set?
+    - returns true if @`current_player_piece` is `:black` or `:white` else false
   - is_valid_placement?(column)
     - returns false if column is not an integer
     - returns false if column is out-of-bounds
     - returns true if column is not full
-  - place_piece(piece, column)
-    - TODO
+  - place_piece!(player_obj)
+    - col = player_obj.get_col()
+    - loop thru row `r` from @`rows` - 1 to 0 in @`board[r][col]`
+      - if @`board[r][c]` is not `:empty`, continue
+      - @`board[r][c]` = player_obj.piece
+      - break
   - get_random_player
     - randomly selects a player object from @`players` and returns it
   - get_current_player
@@ -113,15 +132,13 @@
     - returns true if any of the 4 specialized `did_player_win_`-prefixed  methods return true
   - switch_player_turn!
     - TODO
+  - clear_console()
+    - TODO
   - print_board()
     - TODO
   - print_player_prompt(is_valid_input, last_input)
     - TODO
   - print_game_end()
-    - TODO
-  - print_game_end_screen()
-    - TODO
-  - print_game_turn_screen(is_valid_input, last_input)
     - TODO
 
 ## UI Design
