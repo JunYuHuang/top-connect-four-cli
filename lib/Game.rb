@@ -70,7 +70,8 @@ class Game
   end
 
   def switch_players!
-    # TODO
+    return if @players.size != @players_count
+    @current_player_piece == :white ? :black : :white
   end
 
   def is_valid_placement?(column)
@@ -142,7 +143,8 @@ class Game
   end
 
   def clear_console
-    # TODO
+    is_windows_os = RUBY_PLATFORM =~ /win32|win64|\.NET|windows|cygwin|mingw32/i
+    is_windows_os ? system('cls') : system('clear')
   end
 
   def print_board
