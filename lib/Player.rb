@@ -19,8 +19,7 @@ class Player
     is_valid_input = true
     last_input = nil
     loop do
-      @game.print_board
-      @game.print_player_prompt(is_valid_input, last_input)
+      @game.print_turn_screen(is_valid_input, last_input)
       column = gets.chomp.downcase
 
       if @game.is_valid_placement?(column)
