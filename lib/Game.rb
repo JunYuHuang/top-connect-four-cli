@@ -53,7 +53,9 @@ class Game
   end
 
   def is_current_player_set?
-    # TODO
+    return false if @current_player_piece.nil?
+    return false if @current_player_piece == :empty
+    @@valid_pieces.include?(@current_player_piece)
   end
 
   def is_valid_placement?(column)
