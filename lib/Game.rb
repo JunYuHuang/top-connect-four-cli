@@ -79,7 +79,9 @@ class Game
 
   def switch_players!
     return if @players.size != @players_count
-    @current_player_piece == :white ? :black : :white
+    return if @current_player_piece.nil?
+    @current_player_piece = @current_player_piece == :white ? :black : :white
+    nil
   end
 
   def is_valid_placement?(column)

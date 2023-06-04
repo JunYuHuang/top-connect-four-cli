@@ -209,7 +209,6 @@ describe Game do
     end
   end
 
-  # TODO
   describe "#get_player_by_piece" do
     it "returns nil if called on a game with 0 players" do
       game = Game.new
@@ -219,6 +218,34 @@ describe Game do
     it "returns the player object if called on a game with 2 players" do
       game = Game.new(nil, PlayerMock)
       expect(game.get_player_by_piece(:black)).to_not eql(nil)
+    end
+  end
+
+  describe "#switch_players!" do
+    it "does nothing if called on a game with 0 players" do
+      game = Game.new
+      game.switch_players!
+      expect(game.current_player_piece).to eql(nil)
+    end
+
+    it "does nothing if called on a game with 2 players but does not have its initial player piece set" do
+      game = Game.new(nil, PlayerMock)
+      game.switch_players!
+      expect(game.current_player_piece).to eql(nil)
+    end
+
+    it "sets the next player turn to the player with the black pieces if called on a game with 2 players and the current turn is the player with the white pieces" do
+      game = Game.new(nil, PlayerMock)
+      game.current_player_piece = :white
+      game.switch_players!
+      expect(game.current_player_piece).to eql(:black)
+    end
+
+    it "sets the next player turn to the player with the white pieces if called on a game with 2 players and the current turn is the player with the black pieces" do
+      game = Game.new(nil, PlayerMock)
+      game.current_player_piece = :black
+      game.switch_players!
+      expect(game.current_player_piece).to eql(:white)
     end
   end
 end

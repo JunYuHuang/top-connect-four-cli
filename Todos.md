@@ -19,7 +19,7 @@
 - [x] Complete `#get_random_player` method with tests
 - [x] Complete `#get_current_player` method with tests
 - [x] Complete `#get_player_by_piece` method with tests
-- [ ] Complete `#switch_players!` method with tests
+- [x] Complete `#switch_players!` method with tests
 - [ ] Complete `#is_valid_placement?` method with tests
 - [ ] Complete `#place_piece!` method with tests
 - [ ] Complete `#did_player_win?` method with tests
