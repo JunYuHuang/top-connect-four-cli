@@ -48,6 +48,46 @@ class Game
     ))
   end
 
+  def play
+    # TODO
+  end
+
+  def is_current_player_set?
+    # TODO
+  end
+
+  def is_valid_placement?(column)
+    # TODO
+  end
+
+  def place_piece!(player)
+    # TODO
+  end
+
+  def get_random_player
+    # TODO
+  end
+
+  def get_current_player
+    # TODO
+  end
+
+  def did_player_win?(player)
+    # TODO
+  end
+
+  def switch_players!
+    # TODO
+  end
+
+  def print_turn_screen(is_valid_input, last_input)
+    # TODO
+  end
+
+  def print_end_screen
+    # TODO
+  end
+
   private
 
   def self.is_valid_board?(board, rows = 6, cols = 7)
@@ -78,5 +118,37 @@ class Game
 
   def self.get_empty_board(rows = 6, cols = 7)
     Array.new(rows) { Array.new(cols, :empty) }
+  end
+
+  def did_player_win_horizontal?(player)
+    # TODO
+  end
+
+  def did_player_win_vertical?(player)
+    # TODO
+  end
+
+  def did_player_win_neg_diagonal?(player)
+    # TODO
+  end
+
+  def did_player_win_pos_diagonal?(player)
+    # TODO
+  end
+
+  def clear_console
+    # TODO
+  end
+
+  def print_board
+    # TODO
+  end
+
+  def print_player_prompt(is_valid_input, last_input)
+    # TODO
+  end
+
+  def print_game_end
+    # TODO
   end
 end
