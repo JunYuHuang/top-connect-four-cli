@@ -24,7 +24,7 @@ class Game
     @cols = 7
     @line_length = 4
     @current_player_piece = nil
-    @board = board ? self.is_valid_board?(board) : self.get_empty_board
+    @board = self.class.is_valid_board?(board) ? board : self.class.get_empty_board
     @players = []
 
     @players.push(
@@ -66,5 +66,9 @@ class Game
     end
 
     true
+  end
+
+  def self.get_empty_board(rows = 6, cols = 7)
+    Array.new(rows) { Array.new(cols, :empty) }
   end
 end

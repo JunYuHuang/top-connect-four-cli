@@ -1,4 +1,5 @@
 require './lib/Game'
+require './spec/PlayerMock'
 
 describe Game do
   describe ".is_valid_board?" do
@@ -68,6 +69,30 @@ describe Game do
         [:empty, :empty, :empty, :empty, :empty, :empty, :empty],[:empty, :empty, :empty, :empty, :empty, :empty, :empty],[:empty, :black, :empty, :empty, :empty, :empty, :empty],[:empty, :white, :white, :empty, :empty, :empty, :empty],[:empty, :black, :black, :white, :empty, :empty, :empty],
       ]
       expect(Game.is_valid_board?(board)).to eql(true)
+    end
+  end
+
+  describe ".get_empty_board" do
+    it "returns an empty game board if called" do
+      board = [
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],[:empty, :empty, :empty, :empty, :empty, :empty, :empty],[:empty, :empty, :empty, :empty, :empty, :empty, :empty],[:empty, :empty, :empty, :empty, :empty, :empty, :empty],[:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+      ]
+      expect(Game.get_empty_board).to eql(board)
+    end
+  end
+
+  describe "#initialize" do
+    it "returns a non-null instance if called with no parameters" do
+      expect(Game.new).to_not eql(nil)
+    end
+
+    it "returns a non-null instance if called with a valid board argument" do
+      board = [
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],[:empty, :empty, :empty, :empty, :empty, :empty, :empty],[:empty, :empty, :empty, :empty, :empty, :empty, :empty],[:empty, :empty, :empty, :empty, :empty, :empty, :empty],[:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+      ]
+      expect(Game.new(board)).to_not eql(nil)
     end
   end
 end
