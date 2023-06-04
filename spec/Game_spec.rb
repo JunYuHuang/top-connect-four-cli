@@ -94,5 +94,12 @@ describe Game do
       ]
       expect(Game.new(board)).to_not eql(nil)
     end
+
+    it "returns a non-null instance if called with a valid board argument" do
+      game = Game.new(nil, PlayerMock)
+      expect(game).to_not eql(nil)
+      expect(game.players[0].name).to eql("Player 1")
+      expect(game.players[0].piece).to eql(:black)
+    end
   end
 end

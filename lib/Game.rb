@@ -19,7 +19,7 @@ class Game
     5 => "5️⃣", 6 => "6️⃣", 7 => "7️⃣"
   }
 
-  def initialize(board = nil, player_1_class = nil, player_2_class = nil)
+  def initialize(board = nil, player_class = nil)
     @rows = 6
     @cols = 7
     @line_length = 4
@@ -27,13 +27,17 @@ class Game
     @board = self.class.is_valid_board?(board) ? board : self.class.get_empty_board
     @players = []
 
-    @players.push(
-      player_1_class.new(self, "Player #{@players.size + 1}", :black)
-    ) if player_1_class
+    return unless player_class
 
-    @players.push(
-      player_1_class.new(self, "Player #{@players.size + 1}", @players.empty ? :black : :white)
-    ) if player_2_class
+    2.times do |i|
+      @players.push(
+        player_class.new(
+          self,
+          "Player #{@players.size + 1}",
+          @players.empty? ? :black : :white
+        )
+      )
+    end
   end
 
   def add_player(player_class)
