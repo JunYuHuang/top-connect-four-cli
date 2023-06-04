@@ -42,7 +42,11 @@ describe Game do
     it "returns false if called with a 2D array of the right dimensions where there is a non-empty piece symbol not in the bottom-most row of its cell" do
       board = [
         [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
-        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],[:empty, :empty, :empty, :empty, :empty, :empty, :empty],[:empty, :white, :empty, :empty, :empty, :empty, :empty],[:empty, :empty, :empty, :black, :empty, :empty, :empty],[:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :white, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :black, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
       ]
       expect(Game.is_valid_board?(board)).to eql(false)
     end
@@ -50,7 +54,11 @@ describe Game do
     it "returns true if called with a 2D array of the right dimensions where every value of its subarray is an :empty piece symbol" do
       board = [
         [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
-        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],[:empty, :empty, :empty, :empty, :empty, :empty, :empty],[:empty, :empty, :empty, :empty, :empty, :empty, :empty],[:empty, :empty, :empty, :empty, :empty, :empty, :empty],[:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
       ]
       expect(Game.is_valid_board?(board)).to eql(true)
     end
@@ -58,7 +66,11 @@ describe Game do
     it "returns true if called with a 2D array of the right dimensions where there are some valid game pieces in the bottom-most row" do
       board = [
         [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
-        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],[:empty, :empty, :empty, :empty, :empty, :empty, :empty],[:empty, :empty, :empty, :empty, :empty, :empty, :empty],[:empty, :empty, :empty, :empty, :empty, :empty, :empty],[:empty, :black, :white, :white, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :black, :white, :white, :empty, :empty, :empty],
       ]
       expect(Game.is_valid_board?(board)).to eql(true)
     end
@@ -66,7 +78,11 @@ describe Game do
     it "returns true if called with a 2D array of the right dimensions where there are some valid non-empty game pieces stacked on top of each other" do
       board = [
         [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
-        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],[:empty, :empty, :empty, :empty, :empty, :empty, :empty],[:empty, :black, :empty, :empty, :empty, :empty, :empty],[:empty, :white, :white, :empty, :empty, :empty, :empty],[:empty, :black, :black, :white, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :black, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :white, :white, :empty, :empty, :empty, :empty],
+        [:empty, :black, :black, :white, :empty, :empty, :empty],
       ]
       expect(Game.is_valid_board?(board)).to eql(true)
     end
@@ -76,7 +92,11 @@ describe Game do
     it "returns an empty game board if called" do
       board = [
         [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
-        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],[:empty, :empty, :empty, :empty, :empty, :empty, :empty],[:empty, :empty, :empty, :empty, :empty, :empty, :empty],[:empty, :empty, :empty, :empty, :empty, :empty, :empty],[:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
       ]
       expect(Game.get_empty_board).to eql(board)
     end
@@ -90,7 +110,11 @@ describe Game do
     it "returns a non-null instance if called with a valid board argument" do
       board = [
         [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
-        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],[:empty, :empty, :empty, :empty, :empty, :empty, :empty],[:empty, :empty, :empty, :empty, :empty, :empty, :empty],[:empty, :empty, :empty, :empty, :empty, :empty, :empty],[:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
       ]
       expect(Game.new(board)).to_not eql(nil)
     end
