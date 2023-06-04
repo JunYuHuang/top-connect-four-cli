@@ -136,6 +136,7 @@ class Game
       prev = board[last_row][col]
       (0..second_last_row).reverse_each do |row|
         return false if prev == :empty && board[row][col] != :empty
+        prev = board[row][col]
       end
     end
 
