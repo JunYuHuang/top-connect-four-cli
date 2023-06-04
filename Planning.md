@@ -92,7 +92,7 @@
       - `board.size` = @`rows`
       - `board[row].size` = @`cols`
       - `board[row][col]` = a symbol from the set { :black, :white: :empty }
-  - play
+  - play()
     - while true
       - if there is no current player set
         - @`current_player_piece` = get_random_player().piece()
@@ -104,6 +104,8 @@
         - print_game_end()
         - return
       - switch_player_turn!()
+  - get_empty_board()
+    - TODO
   - add_player(player_class)
     - returns if there are already 2 players in the game
     - adds up to 2 players to the @`players` array
