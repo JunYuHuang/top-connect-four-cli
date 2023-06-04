@@ -208,4 +208,17 @@ describe Game do
       expect(game.get_current_player).to_not eql(nil)
     end
   end
+
+  # TODO
+  describe "#get_player_by_piece" do
+    it "returns nil if called on a game with 0 players" do
+      game = Game.new
+      expect(game.get_player_by_piece(:black)).to eql(nil)
+    end
+
+    it "returns the player object if called on a game with 2 players" do
+      game = Game.new(nil, PlayerMock)
+      expect(game.get_player_by_piece(:black)).to_not eql(nil)
+    end
+  end
 end

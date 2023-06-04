@@ -16,12 +16,13 @@
 - [x] Complete `#add_player` method with tests
 - [ ] Complete `#play` method and test manually
 - [x] Complete `#is_current_player_set?` method with tests
-- [ ] Complete `#is_valid_placement?` method with tests
-- [ ] Complete `#place_piece!` method with tests
 - [x] Complete `#get_random_player` method with tests
 - [x] Complete `#get_current_player` method with tests
-- [ ] Complete `#did_player_win?` method with tests
+- [x] Complete `#get_player_by_piece` method with tests
 - [ ] Complete `#switch_players!` method with tests
+- [ ] Complete `#is_valid_placement?` method with tests
+- [ ] Complete `#place_piece!` method with tests
+- [ ] Complete `#did_player_win?` method with tests
 - [ ] Complete `#print_turn_screen` method and test manually
 - [ ] Complete `#print_end_screen` method and test manually
 - [ ] Complete `#did_player_win_horizontal?` method with tests

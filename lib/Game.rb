@@ -3,7 +3,8 @@ require 'set'
 class Game
   attr_accessor(
     :players_count, :rows, :cols, :line_length, :valid_pieces,
-    :current_player_piece, :board, :players, :piece_to_string, :digit_to_string
+    :current_player_piece, :board, :players, :piece_to_string,
+    :digit_to_string, :winner_piece
   )
 
   @@valid_pieces = Set.new([:black, :white, :empty])
@@ -25,6 +26,7 @@ class Game
     @cols = 7
     @line_length = 4
     @current_player_piece = nil
+    @winner_piece = nil
     @board = self.class.is_valid_board?(board) ? board : self.class.get_empty_board
     @players = []
 
@@ -66,6 +68,12 @@ class Game
   def get_current_player
     return nil if @players.size != @players_count
     res = @players.filter { |p| p.piece == @current_player_piece }
+    res[0]
+  end
+
+  def get_player_by_piece(piece)
+    return nil if @players.size != @players_count
+    res = @players.filter { |p| p.piece == piece }
     res[0]
   end
 
