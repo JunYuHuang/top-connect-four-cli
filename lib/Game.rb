@@ -94,26 +94,6 @@ class Game
     # TODO
   end
 
-  def print_board
-    wall = "|"
-    res = []
-
-    @board.each do |row|
-      row_display = [wall]
-      row.each do |cell|
-        row_display.push(@@piece_to_string[cell])
-      end
-      row_display.push(wall, "\n")
-      res.push(row_display.join)
-    end
-
-    col_labels = (1..@cols).to_a.map { |i| @@digit_to_string[i] }
-    col_row = [wall, col_labels.join, wall, "\n"]
-    res.push(col_row.join, "\n")
-
-    puts(res.join)
-  end
-
   private
 
   def self.is_valid_board?(board, rows = 6, cols = 7)
@@ -166,6 +146,26 @@ class Game
   def clear_console
     is_windows_os = RUBY_PLATFORM =~ /win32|win64|\.NET|windows|cygwin|mingw32/i
     is_windows_os ? system('cls') : system('clear')
+  end
+
+  def print_board
+    wall = "|"
+    res = []
+
+    @board.each do |row|
+      row_display = [wall]
+      row.each do |cell|
+        row_display.push(@@piece_to_string[cell])
+      end
+      row_display.push(wall, "\n")
+      res.push(row_display.join)
+    end
+
+    col_labels = (1..@cols).to_a.map { |i| @@digit_to_string[i] }
+    col_row = [wall, col_labels.join, wall, "\n"]
+    res.push(col_row.join, "\n")
+
+    puts(res.join)
   end
 
   def print_player_prompt(is_valid_input, last_input)
