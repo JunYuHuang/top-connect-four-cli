@@ -29,6 +29,6 @@
 - [ ] Complete `#did_player_win_neg_diagonal?` method with tests
 - [ ] Complete `#did_player_win_pos_diagonal?` method with tests
 - [x] Complete `#clear_console` method and test manually
-- [ ] Complete `#print_board` method and test manually
+- [x] Complete `#print_board` method and test manually
 - [ ] Complete `print_player_prompt` method and test manually
 - [ ] Complete `print_game_end` method and test manually
