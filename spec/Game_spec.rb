@@ -102,4 +102,31 @@ describe Game do
       expect(game.players[0].piece).to eql(:black)
     end
   end
+
+  describe "#add_player" do
+    it "adds a new player with name 'Player 1' and with the black piece to the game if called with a Player class on a game with no players" do
+      game = Game.new
+      game.add_player(PlayerMock)
+      res = [game.players[0].name, game.players[0].piece]
+      expected = ["Player 1", :black]
+      expect(res).to eql(expected)
+    end
+
+    it "adds a new player with name 'Player 2' and with the white piece to the game if called with a Player class on a game with 1 player" do
+      game = Game.new
+      game.add_player(PlayerMock)
+      game.add_player(PlayerMock)
+      res = [game.players[1].name, game.players[1].piece]
+      expected = ["Player 2", :white]
+      expect(res).to eql(expected)
+    end
+
+    it "does nothing if called with a Player class on a game with 2 players" do
+      game = Game.new
+      game.add_player(PlayerMock)
+      game.add_player(PlayerMock)
+      game.add_player(PlayerMock)
+      expect(game.players.size).to eql(2)
+    end
+  end
 end

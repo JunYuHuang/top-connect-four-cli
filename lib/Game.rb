@@ -2,8 +2,8 @@ require 'set'
 
 class Game
   attr_accessor(
-    :rows, :cols, :line_length, :valid_pieces, :current_player_piece,
-    :board, :players, :piece_to_string, :digit_to_string
+    :players_count, :rows, :cols, :line_length, :valid_pieces,
+    :current_player_piece, :board, :players, :piece_to_string, :digit_to_string
   )
 
   @@valid_pieces = Set.new([:black, :white, :empty])
@@ -20,6 +20,7 @@ class Game
   }
 
   def initialize(board = nil, player_class = nil)
+    @players_count = 2
     @rows = 6
     @cols = 7
     @line_length = 4
@@ -29,19 +30,22 @@ class Game
 
     return unless player_class
 
-    2.times do |i|
-      @players.push(
-        player_class.new(
-          self,
-          "Player #{@players.size + 1}",
-          @players.empty? ? :black : :white
-        )
-      )
+    @players_count.times do |i|
+      @players.push(player_class.new(
+        self,
+        "Player #{@players.size + 1}",
+        @players.empty? ? :black : :white
+      ))
     end
   end
 
   def add_player(player_class)
-    # TODO
+    return if @players.size >= @players_count
+    @players.push(player_class.new(
+      self,
+      "Player #{@players.size + 1}",
+      @players.empty? ? :black : :white
+    ))
   end
 
   private
