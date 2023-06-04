@@ -15,6 +15,10 @@ class Player
     @name
   end
 
+  def to_s(emoji = nil)
+    "#{name} (#{piece.upcase}#{ emoji ? " #{emoji}" : ""})"
+  end
+
   def get_placement
     is_valid_input = true
     last_input = nil

@@ -14,4 +14,20 @@ describe Player do
       expect(player.name).to eql("Player 1")
     end
   end
+
+  describe "#to_s" do
+    it "returns the correct string if called with an optional ascii char" do
+      player = Player.new(nil, "Player 1", :black)
+      res = player.to_s("⚫")
+      expected = "Player 1 (BLACK ⚫)"
+      expect(res).to eql(expected)
+    end
+
+    it "returns the correct string if called no args" do
+      player = Player.new(nil, "Player 1", :black)
+      res = player.to_s
+      expected = "Player 1 (BLACK)"
+      expect(res).to eql(expected)
+    end
+  end
 end
