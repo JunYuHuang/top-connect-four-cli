@@ -58,6 +58,19 @@ class Game
     @@valid_pieces.include?(@current_player_piece)
   end
 
+  def get_random_player
+    return nil if @players.size != @players_count
+    @players[rand(0...@players_count)]
+  end
+
+  def get_current_player
+    # TODO
+  end
+
+  def switch_players!
+    # TODO
+  end
+
   def is_valid_placement?(column)
     # TODO
   end
@@ -66,19 +79,7 @@ class Game
     # TODO
   end
 
-  def get_random_player
-    # TODO
-  end
-
-  def get_current_player
-    # TODO
-  end
-
   def did_player_win?(player)
-    # TODO
-  end
-
-  def switch_players!
     # TODO
   end
 

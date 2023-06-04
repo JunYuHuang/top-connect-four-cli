@@ -154,4 +154,16 @@ describe Game do
       expect(game.is_current_player_set?).to eql(true)
     end
   end
+
+  describe "#get_random_player" do
+    it "returns nil if called on a game with 0 players" do
+      game = Game.new
+      expect(game.get_random_player).to eql(nil)
+    end
+
+    it "returns a random player object if called on a game with 2 players" do
+      game = Game.new(nil, PlayerMock)
+      expect(game.get_random_player).to_not eql(nil)
+    end
+  end
 end

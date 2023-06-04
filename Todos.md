@@ -18,7 +18,7 @@
 - [x] Complete `#is_current_player_set?` method with tests
 - [ ] Complete `#is_valid_placement?` method with tests
 - [ ] Complete `#place_piece!` method with tests
-- [ ] Complete `#get_random_player` method with tests
+- [x] Complete `#get_random_player` method with tests
 - [ ] Complete `#get_current_player` method with tests
 - [ ] Complete `#did_player_win?` method with tests
 - [ ] Complete `#switch_players!` method with tests
