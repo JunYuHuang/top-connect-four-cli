@@ -64,7 +64,9 @@ class Game
   end
 
   def get_current_player
-    # TODO
+    return nil if @players.size != @players_count
+    res = @players.filter { |p| p.piece == @current_player_piece }
+    res[0]
   end
 
   def switch_players!
