@@ -298,21 +298,6 @@ describe Game do
   end
 
   describe "#place_piece!" do
-    it "does nothing if called with (:black, 0) on a game with a decided winner piece" do
-      board = [
-        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
-        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
-        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
-        [:empty, :black, :empty, :empty, :empty, :empty, :empty],
-        [:empty, :white, :white, :white, :white, :empty, :empty],
-        [:empty, :black, :black, :white, :black, :empty, :empty],
-      ]
-      game = Game.new(board, PlayerMock)
-      game.winner_piece = :white
-      game.place_piece!(:black, 0)
-      expect(game.board[5][0]).to eql(:empty)
-    end
-
     it "does nothing if called with (:black, 0) on a game with no players" do
       game = Game.new
       game.place_piece!(:black, 0)

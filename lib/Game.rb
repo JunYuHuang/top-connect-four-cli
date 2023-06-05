@@ -4,7 +4,7 @@ class Game
   attr_accessor(
     :players_count, :rows, :cols, :line_length, :valid_pieces,
     :current_player_piece, :board, :players, :piece_to_string,
-    :digit_to_string, :winner_piece
+    :digit_to_string,
   )
 
   @@valid_pieces = Set.new([:black, :white, :empty])
@@ -26,7 +26,6 @@ class Game
     @cols = 7
     @line_length = 4
     @current_player_piece = nil
-    @winner_piece = nil
     @board = self.class.is_valid_board?(board) ? board : self.class.get_empty_board
     @players = []
 
@@ -96,7 +95,7 @@ class Game
   end
 
   def place_piece!(piece, col)
-    return if !@winner_piece.nil? or @players.size != @players_count
+    return if @players.size != @players_count
 
     (0...@rows).reverse_each do |row|
       if @board[row][col] == :empty
@@ -119,10 +118,10 @@ class Game
     # TODO
   end
 
-  def print_end_screen
+  def print_end_screen(winner_player)
     clear_console
     print_board
-    print_game_end
+    print_game_end(winner_player)
   end
 
   private
@@ -223,10 +222,9 @@ class Game
     # TODO
   end
 
-  def print_game_end
-    return if @winner_piece.nil? or @winner_piece == :empty
-    winner = get_player_by_piece(@winner_piece)
-      .to_s(@@piece_to_string[@winner_piece])
-    puts("Game ended: #{winner} won!")
+  def print_game_end(winner_player)
+    winner = winner_player
+    piece_emoji = @@piece_to_string[winner_player.piece]
+    puts("Game ended: #{winner.to_s(piece_emoji)} won!")
   end
 end
