@@ -296,4 +296,48 @@ describe Game do
       expect(game.is_valid_placement?(0)).to eql(true)
     end
   end
+
+  # TODO
+  describe "#place_piece!" do
+    it "does nothing if called with (:black, 0) on a game with a decided winner piece" do
+      board = [
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :black, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :white, :white, :white, :white, :empty, :empty],
+        [:empty, :black, :black, :white, :black, :empty, :empty],
+      ]
+      game = Game.new(board, PlayerMock)
+      game.winner_piece = :white
+      game.place_piece!(:black, 0)
+      expect(game.board[5][0]).to eql(:empty)
+    end
+
+    it "does nothing if called with (:black, 0) on a game with no players" do
+      game = Game.new
+      game.place_piece!(:black, 0)
+      expect(game.board[5][0]).to eql(:empty)
+    end
+
+    it "modifies the board correctly if called with (:black, 0) on a game with 2 players that has no decided winner yet" do
+      game = Game.new(nil, PlayerMock)
+      game.place_piece!(:black, 0)
+      expect(game.board[5][0]).to eql(:black)
+    end
+
+    it "modifies the board correctly if called with (:white, 1) on a game with 2 players that has no decided winner yet" do
+      board = [
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :black, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :white, :white, :white, :empty, :empty, :empty],
+        [:empty, :black, :black, :white, :black, :empty, :empty],
+      ]
+      game = Game.new(board, PlayerMock)
+      game.place_piece!(:white, 1)
+      expect(game.board[2][1]).to eql(:white)
+    end
+  end
 end

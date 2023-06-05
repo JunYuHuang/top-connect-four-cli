@@ -95,8 +95,15 @@ class Game
     false
   end
 
-  def place_piece!(player)
-    # TODO
+  def place_piece!(piece, col)
+    return if !@winner_piece.nil? or @players.size != @players_count
+
+    (0...@rows).reverse_each do |row|
+      if @board[row][col] == :empty
+        @board[row][col] = piece
+        break
+      end
+    end
   end
 
   def did_player_win?(player)
