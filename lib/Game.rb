@@ -101,7 +101,9 @@ class Game
   end
 
   def print_end_screen
-    # TODO
+    clear_console
+    print_board
+    print_game_end
   end
 
   private
@@ -183,6 +185,9 @@ class Game
   end
 
   def print_game_end
-    # TODO
+    return if @winner_piece.nil? or @winner_piece == :empty
+    winner = get_player_by_piece(@winner_piece)
+      .to_s(@@piece_to_string[@winner_piece])
+    puts("Game ended: #{winner} won!")
   end
 end
