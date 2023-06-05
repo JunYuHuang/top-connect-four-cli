@@ -297,7 +297,6 @@ describe Game do
     end
   end
 
-  # TODO
   describe "#place_piece!" do
     it "does nothing if called with (:black, 0) on a game with a decided winner piece" do
       board = [
@@ -338,6 +337,43 @@ describe Game do
       game = Game.new(board, PlayerMock)
       game.place_piece!(:white, 1)
       expect(game.board[2][1]).to eql(:white)
+    end
+  end
+
+  describe "#did_player_win?" do
+    it "returns false if called with a player object on a game with the wrong number of players" do
+      game = Game.new
+      game.add_player(PlayerMock)
+      player_black = game.get_player_by_piece(:black)
+      expect(game.did_player_win?(player_black)).to eql(false)
+    end
+
+    it "returns false if called with a player object on a game that does not have 4 in a row horizontally" do
+      board = [
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :black, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :white, :white, :white, :empty, :white, :empty],
+        [:empty, :black, :black, :white, :black, :black, :empty],
+      ]
+      game = Game.new(board, PlayerMock)
+      player_white = game.get_player_by_piece(:white)
+      expect(game.did_player_win?(player_white)).to eql(false)
+    end
+
+    it "returns true if called with a player object on a game that has 4 in a row horizontally" do
+      board = [
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :black, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :white, :white, :white, :white, :white, :empty],
+        [:empty, :black, :black, :white, :black, :black, :empty],
+      ]
+      game = Game.new(board, PlayerMock)
+      player_white = game.get_player_by_piece(:white)
+      expect(game.did_player_win?(player_white)).to eql(true)
     end
   end
 end

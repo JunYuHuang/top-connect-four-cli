@@ -107,7 +107,12 @@ class Game
   end
 
   def did_player_win?(player)
-    # TODO
+    return false if @players.size != @players_count
+    return true if did_player_win_horizontal?(player)
+    return true if did_player_win_vertical?(player)
+    return true if did_player_win_neg_diagonal?(player)
+    return true if did_player_win_pos_diagonal?(player)
+    false
   end
 
   def print_turn_screen(is_valid_input, last_input)
@@ -154,7 +159,17 @@ class Game
   end
 
   def did_player_win_horizontal?(player)
-    # TODO
+    return false if @players.size != @players_count
+
+    @board.each do |row|
+      count = 0
+      row.each do |cell|
+        return true if count == @line_length
+        count = cell == player.piece ? count + 1 : 0
+      end
+    end
+
+    false
   end
 
   def did_player_win_vertical?(player)
