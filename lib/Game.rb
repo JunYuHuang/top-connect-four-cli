@@ -49,8 +49,23 @@ class Game
     ))
   end
 
+  # TODO - to test manually
   def play
-    # TODO
+    return if @players.size != @players_count
+
+    @current_player_piece = get_random_player.piece
+
+    loop do
+      player = get_current_player
+      place_piece!(player.piece, player.get_placement)
+
+      if did_player_win?(player)
+        print_end_screen(player)
+        return
+      end
+
+      switch_players!
+    end
   end
 
   def is_current_player_set?
@@ -115,6 +130,7 @@ class Game
   end
 
   def print_turn_screen(is_valid_input = true, last_input = nil)
+    clear_console
     print_board
     print_player_prompt(is_valid_input, last_input)
   end
@@ -229,7 +245,7 @@ class Game
       "It is #{player_string}'s turn.\n",
       "Empty spots that can have a piece dropped there are indicated by ⭕.\n",
       "Enter a column number from 1 to 7 to drop your piece:\n",
-      "#{ is_valid_input ? "" : "❌ '#{last_input}' is not a valid column number. Try again."}\n",
+      "#{ is_valid_input ? "" : "❌ '#{last_input}' is an invalid or full column. Try again."}\n",
     ]
     puts(res.join)
   end
