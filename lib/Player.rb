@@ -24,7 +24,7 @@ class Player
     last_input = nil
     loop do
       @game.print_turn_screen(is_valid_input, last_input)
-      column = gets.chomp.downcase
+      column = gets.chomp.to_i - 1
 
       if @game.is_valid_placement?(column)
         return column
