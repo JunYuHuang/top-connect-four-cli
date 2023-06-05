@@ -154,31 +154,6 @@ describe Game do
     end
   end
 
-  describe "#is_current_player_set?" do
-    it "returns false if called and the game's current player piece has not been set" do
-      game = Game.new
-      expect(game.is_current_player_set?).to eql(false)
-    end
-
-    it "returns false if called and the game's current player piece has been set to the :empty symbol" do
-      game = Game.new
-      game.current_player_piece = :empty
-      expect(game.is_current_player_set?).to eql(false)
-    end
-
-    it "returns false if called and the game's current player piece has been set to '1'" do
-      game = Game.new
-      game.current_player_piece = 1
-      expect(game.is_current_player_set?).to eql(false)
-    end
-
-    it "returns true if called and the game's current player piece has been set to the :white symbol" do
-      game = Game.new
-      game.current_player_piece = :white
-      expect(game.is_current_player_set?).to eql(true)
-    end
-  end
-
   describe "#get_random_player" do
     it "returns nil if called on a game with 0 players" do
       game = Game.new

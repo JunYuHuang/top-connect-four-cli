@@ -15,7 +15,6 @@
 - [x] Complete `#initialize` (constructor) method with tests
 - [x] Complete `#add_player` method with tests
 - [ ] Complete `#play` method and test manually
-- [x] Complete `#is_current_player_set?` method with tests
 - [x] Complete `#get_random_player` method with tests
 - [x] Complete `#get_current_player` method with tests
 - [x] Complete `#get_player_by_piece` method with tests

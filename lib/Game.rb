@@ -68,12 +68,6 @@ class Game
     end
   end
 
-  def is_current_player_set?
-    return false if @current_player_piece.nil?
-    return false if @current_player_piece == :empty
-    @@valid_pieces.include?(@current_player_piece)
-  end
-
   def get_random_player
     return nil if @players.size != @players_count
     @players[rand(0...@players_count)]
