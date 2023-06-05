@@ -84,12 +84,12 @@ class Game
     nil
   end
 
-  def is_valid_placement?(column)
-    column = column.to_i - 1
-    return false if column < 0 or column >= @cols
+  def is_valid_placement?(col)
+    return false if col.class != Integer
+    return false if col < 0 or col >= @cols
 
     (0...@rows).reverse_each do |row|
-      return true if @board[row][column] == :empty
+      return true if @board[row][col] == :empty
     end
 
     false

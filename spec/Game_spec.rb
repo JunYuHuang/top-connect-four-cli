@@ -255,14 +255,19 @@ describe Game do
       expect(game.is_valid_placement?("poo")).to eql(false)
     end
 
-    it "returns false if called with an out-of-bounds (too low) integer string value" do
+    it "returns false if called with an integer string value" do
       game = Game.new
       expect(game.is_valid_placement?("0")).to eql(false)
     end
 
-    it "returns false if called with an out-of-bounds (too high) integer string value" do
+    it "returns false if called with an out-of-bounds (too low) integer value" do
       game = Game.new
-      expect(game.is_valid_placement?("8")).to eql(false)
+      expect(game.is_valid_placement?(-1)).to eql(false)
+    end
+
+    it "returns false if called with an out-of-bounds (too high) integer value" do
+      game = Game.new
+      expect(game.is_valid_placement?(7)).to eql(false)
     end
 
     it "returns false if called with a valid integer value that represents a full column" do
@@ -275,7 +280,7 @@ describe Game do
         [:black, :empty, :empty, :empty, :empty, :empty, :empty],
       ]
       game = Game.new(board)
-      expect(game.is_valid_placement?("1")).to eql(false)
+      expect(game.is_valid_placement?(0)).to eql(false)
     end
 
     it "returns true if called with a valid integer value that represents a non-full column" do
@@ -288,7 +293,7 @@ describe Game do
         [:black, :empty, :empty, :empty, :empty, :empty, :empty],
       ]
       game = Game.new(board)
-      expect(game.is_valid_placement?("1")).to eql(true)
+      expect(game.is_valid_placement?(0)).to eql(true)
     end
   end
 end
