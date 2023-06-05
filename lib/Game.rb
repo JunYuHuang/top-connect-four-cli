@@ -85,7 +85,14 @@ class Game
   end
 
   def is_valid_placement?(column)
-    # TODO
+    column = column.to_i - 1
+    return false if column < 0 or column >= @cols
+
+    (0...@rows).reverse_each do |row|
+      return true if @board[row][column] == :empty
+    end
+
+    false
   end
 
   def place_piece!(player)

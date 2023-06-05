@@ -248,4 +248,47 @@ describe Game do
       expect(game.current_player_piece).to eql(:white)
     end
   end
+
+  describe "#is_valid_placement?" do
+    it "returns false if called with a non-integer string value" do
+      game = Game.new
+      expect(game.is_valid_placement?("poo")).to eql(false)
+    end
+
+    it "returns false if called with an out-of-bounds (too low) integer string value" do
+      game = Game.new
+      expect(game.is_valid_placement?("0")).to eql(false)
+    end
+
+    it "returns false if called with an out-of-bounds (too high) integer string value" do
+      game = Game.new
+      expect(game.is_valid_placement?("8")).to eql(false)
+    end
+
+    it "returns false if called with a valid integer value that represents a full column" do
+      board = [
+        [:black, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:black, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:white, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:black, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:white, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:black, :empty, :empty, :empty, :empty, :empty, :empty],
+      ]
+      game = Game.new(board)
+      expect(game.is_valid_placement?("1")).to eql(false)
+    end
+
+    it "returns true if called with a valid integer value that represents a non-full column" do
+      board = [
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:black, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:white, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:black, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:white, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:black, :empty, :empty, :empty, :empty, :empty, :empty],
+      ]
+      game = Game.new(board)
+      expect(game.is_valid_placement?("1")).to eql(true)
+    end
+  end
 end
