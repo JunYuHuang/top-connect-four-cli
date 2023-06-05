@@ -114,8 +114,9 @@ class Game
     false
   end
 
-  def print_turn_screen(is_valid_input, last_input)
-    # TODO
+  def print_turn_screen(is_valid_input = true, last_input = nil)
+    print_board
+    print_player_prompt(is_valid_input, last_input)
   end
 
   def print_end_screen(winner_player)
@@ -219,7 +220,18 @@ class Game
   end
 
   def print_player_prompt(is_valid_input, last_input)
-    # TODO
+    return if @current_player_piece.nil? or !get_current_player
+
+    player = get_current_player
+    piece = player.piece
+    player_string = player.to_s(@@piece_to_string[piece])
+    res = [
+      "It is #{player_string}'s turn.\n",
+      "Empty spots that can have a piece dropped there are indicated by ⭕.\n",
+      "Enter a column number from 1 to 7 to drop your piece:\n",
+      "#{ is_valid_input ? "" : "❌ '#{last_input}' is not a valid column number. Try again."}\n",
+    ]
+    puts(res.join)
   end
 
   def print_game_end(winner_player)

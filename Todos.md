@@ -23,7 +23,7 @@
 - [x] Complete `#is_valid_placement?` method with tests
 - [x] Complete `#place_piece!` method with tests
 - [ ] Complete `#did_player_win?` method with tests
-- [ ] Complete `#print_turn_screen` method and test manually
+- [x] Complete `#print_turn_screen` method and test manually
 - [x] Complete `#print_end_screen` method and test manually
 - [x] Complete `#did_player_win_horizontal?` method with tests
 - [x] Complete `#did_player_win_vertical?` method with tests
@@ -31,5 +31,5 @@
 - [ ] Complete `#did_player_win_pos_diagonal?` method with tests
 - [x] Complete `#clear_console` method and test manually
 - [x] Complete `#print_board` method and test manually
-- [ ] Complete `print_player_prompt` method and test manually
+- [x] Complete `print_player_prompt` method and test manually
 - [x] Complete `print_game_end` method and test manually

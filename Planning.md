@@ -160,10 +160,10 @@
 |1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣|
 
 It is Player 1 (BLACK ⚫)'s turn.
-⭕ indicates an empty spot that can have a piece dropped there.
-'x' is an invalid or full column. Try again.
-Enter a column (in the range [1,7]) to drop your piece:
-x
+Empty spots that can have a piece dropped there are indicated by ⭕.
+Enter a column number from 1 to 7 to drop your piece:
+❌ 'asd' is an invalid or full column. Try again.
+asd
 ```
 
 ### End Screen
