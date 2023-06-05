@@ -173,7 +173,17 @@ class Game
   end
 
   def did_player_win_vertical?(player)
-    # TODO
+    return false if @players.size != @players_count
+
+    (0...@cols).each do |col|
+      count = 0
+      (0...@rows).reverse_each do |row|
+        return true if count == @line_length
+        count = @board[row][col] == player.piece ? count + 1 : 0
+      end
+    end
+
+    false
   end
 
   def did_player_win_neg_diagonal?(player)

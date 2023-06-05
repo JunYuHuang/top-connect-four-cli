@@ -375,5 +375,33 @@ describe Game do
       player_white = game.get_player_by_piece(:white)
       expect(game.did_player_win?(player_white)).to eql(true)
     end
+
+    it "returns false if called with a player object on a game that does not have 4 in a row vertically" do
+      board = [
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :black, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :black, :white, :white, :empty, :white, :empty],
+        [:empty, :black, :black, :white, :white, :black, :empty],
+      ]
+      game = Game.new(board, PlayerMock)
+      player_black = game.get_player_by_piece(:black)
+      expect(game.did_player_win?(player_black)).to eql(false)
+    end
+
+    it "returns true if called with a player object on a game that has 4 in a row vertically" do
+      board = [
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :black, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :black, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :black, :white, :white, :empty, :white, :empty],
+        [:empty, :black, :black, :white, :white, :black, :empty],
+      ]
+      game = Game.new(board, PlayerMock)
+      player_black = game.get_player_by_piece(:black)
+      expect(game.did_player_win?(player_black)).to eql(true)
+    end
   end
 end
