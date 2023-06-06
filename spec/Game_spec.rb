@@ -301,7 +301,7 @@ describe Game do
   end
 
   describe "#did_win_horizontal?" do
-    it "returns false if called with a player object on a game that does not have 4 in a row horizontally" do
+    it "returns false if called with a player piece on a game that does not have 4 in a row horizontally" do
       board = [
         [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
         [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
@@ -314,7 +314,7 @@ describe Game do
       expect(game.did_win_horizontal?(:white)).to eql(false)
     end
 
-    it "returns true if called with a player object on a game that has 4 in a row horizontally" do
+    it "returns true if called with a player piece on a game that has 4 in a row horizontally" do
       board = [
         [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
         [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
@@ -329,7 +329,7 @@ describe Game do
   end
 
   describe "#did_win_vertical?" do
-    it "returns false if called with a player object on a game that does not have 4 in a row vertically" do
+    it "returns false if called with a player piece on a game that does not have 4 in a row vertically" do
       board = [
         [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
         [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
@@ -342,7 +342,7 @@ describe Game do
       expect(game.did_win_vertical?(:black)).to eql(false)
     end
 
-    it "returns true if called with a player object on a game that has 4 in a row vertically" do
+    it "returns true if called with a player piece on a game that has 4 in a row vertically" do
       board = [
         [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
         [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
@@ -357,7 +357,7 @@ describe Game do
   end
 
   describe "#did_win_neg_diagonal?" do
-    it "returns false if called with a player object on a game that does not have 4 in a row in a negative diagonal" do
+    it "returns false if called with a player piece on a game that does not have 4 in a row in a negative diagonal" do
       board = [
         [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
         [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
@@ -370,7 +370,7 @@ describe Game do
       expect(game.did_win_neg_diagonal?(:black)).to eql(false)
     end
 
-    it "returns true if called with a player object on a game that has 4 in a row in a negative diagonal" do
+    it "returns true if called with a player piece on a game that has 4 in a row in a negative diagonal" do
       board = [
         [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
         [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
@@ -383,7 +383,7 @@ describe Game do
       expect(game.did_win_neg_diagonal?(:black)).to eql(true)
     end
 
-    it "returns true if called with a player object on a game that has 4 in a row in a negative diagonal" do
+    it "returns true if called with a player piece on a game that has 4 in a row in a negative diagonal" do
       board = [
         [:empty, :empty, :empty, :black, :empty, :empty, :empty],
         [:empty, :empty, :empty, :black, :black, :empty, :empty],
@@ -397,9 +397,8 @@ describe Game do
     end
   end
 
-  # TODO
   describe "#did_win_pos_diagonal?" do
-    it "returns false if called with a player object on a game that does not have 4 in a row in a positive diagonal" do
+    it "returns false if called with a player piece on a game that does not have 4 in a row in a positive diagonal" do
       board = [
         [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
         [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
@@ -412,7 +411,7 @@ describe Game do
       expect(game.did_win_pos_diagonal?(:black)).to eql(false)
     end
 
-    it "returns true if called with a player object on a game that has 4 in a row in a positive diagonal" do
+    it "returns true if called with a player piece on a game that has 4 in a row in a positive diagonal" do
       board = [
         [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
         [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
@@ -425,7 +424,7 @@ describe Game do
       expect(game.did_win_pos_diagonal?(:black)).to eql(true)
     end
 
-    it "returns true if called with a player object on a game that has 4 in a row in a positive diagonal" do
+    it "returns true if called with a player piece on a game that has 4 in a row in a positive diagonal" do
       board = [
         [:empty, :empty, :empty, :black, :empty, :empty, :empty],
         [:empty, :empty, :black, :black, :empty, :empty, :empty],
@@ -436,6 +435,33 @@ describe Game do
       ]
       game = Game.new(board)
       expect(game.did_win_pos_diagonal?(:black)).to eql(true)
+    end
+  end
+
+  describe "#did_player_win?" do
+    it "returns false if called with any value on a game that does not have the correct number of players" do
+      game = Game.new
+      expect(game.did_player_win?(nil)).to eql(false)
+    end
+
+    it "returns false if called with any value on a game that has the correct number of players but the board is empty" do
+      game = Game.new(nil, PlayerMock)
+      mock_player_black = PlayerMock.new(nil, nil, :black)
+      expect(game.did_player_win?(mock_player_black)).to eql(false)
+    end
+
+    it "returns true if called with a player piece on a game that has 4 in a row in a positive diagonal" do
+      board = [
+        [:empty, :empty, :empty, :black, :empty, :empty, :empty],
+        [:empty, :empty, :black, :black, :empty, :empty, :empty],
+        [:empty, :black, :black, :black, :empty, :empty, :empty],
+        [:black, :white, :white, :white, :empty, :empty, :empty],
+        [:white, :black, :white, :black, :empty, :empty, :empty],
+        [:black, :white, :white, :white, :empty, :empty, :empty],
+      ]
+      game = Game.new(board, PlayerMock)
+      mock_player_black = PlayerMock.new(nil, nil, :black)
+      expect(game.did_player_win?(mock_player_black)).to eql(true)
     end
   end
 end

@@ -21,7 +21,7 @@
 - [x] Complete `#switch_players!` method with tests
 - [x] Complete `#is_valid_placement?` method with tests
 - [x] Complete `#place_piece!` method with tests
-- [ ] Complete `#did_player_win?` method with tests
+- [x] Complete `#did_player_win?` method with tests
 - [x] Complete `#print_turn_screen` method and test manually
 - [x] Complete `#print_end_screen` method and test manually
 - [x] Complete `#did_win_horizontal?` method with tests
