@@ -5,7 +5,7 @@
 - [x] Complete tests for `Game` class with `PlayerMock` test double class
 - [x] Complete core methods `Game` class
 - [x] Complete console output methods for `Game` class
-- [ ] Update `app.rb` entry file
+- [x] Update `app.rb` entry file
 - [ ] Update `README.md` with .gif demo recording
 
 ## `Game` class TODOs
