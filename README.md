@@ -4,6 +4,13 @@
 
 This is a console implementation of the two-player board game 'Connect Four'.
 
+Game Parameters:
+
+- Allows 2 human players to play against each other.
+- Player 1 is always assigned the black pieces.
+- Player 2 is always assigned the white pieces.
+- The player who starts first is randomly chosen.
+
 ## Quick Start
 
 This application assumes you have Ruby 3.1.4 installed.
