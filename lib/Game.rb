@@ -116,35 +116,33 @@ class Game
 
   def did_player_win?(player)
     return false if @players.size != @players_count
-    return true if did_player_win_horizontal?(player)
-    return true if did_player_win_vertical?(player)
-    return true if did_player_win_neg_diagonal?(player)
-    return true if did_player_win_pos_diagonal?(player)
+
+    piece = player.piece
+    return true if did_win_horizontal?(piece)
+    return true if did_win_vertical?(piece)
+    return true if did_win_neg_diagonal?(piece)
+    return true if did_win_pos_diagonal?(piece)
     false
   end
 
-  def did_player_win_horizontal?(player)
-    return false if @players.size != @players_count
-
+  def did_win_horizontal?(piece)
     @board.each do |row|
       count = 0
       row.each do |cell|
+        count = cell == piece ? count + 1 : 0
         return true if count == @line_length
-        count = cell == player.piece ? count + 1 : 0
       end
     end
 
     false
   end
 
-  def did_player_win_vertical?(player)
-    return false if @players.size != @players_count
-
+  def did_win_vertical?(piece)
     (0...@cols).each do |col|
       count = 0
       (0...@rows).reverse_each do |row|
+        count = @board[row][col] == piece ? count + 1 : 0
         return true if count == @line_length
-        count = @board[row][col] == player.piece ? count + 1 : 0
       end
     end
 
@@ -152,9 +150,7 @@ class Game
   end
 
   # negative diagonals are lines that go from top left to bottom right
-  def did_player_win_neg_diagonal?(player)
-    piece = player.piece
-
+  def did_win_neg_diagonal?(piece)
     # check left / lower half of negative diagonals
     (0..@rows - @line_length).each do |row|
       diag_row = row
@@ -185,7 +181,7 @@ class Game
   end
 
   # positive diagonals are lines that go from bottom left to top right
-  def did_player_win_pos_diagonal?(player)
+  def did_win_pos_diagonal?(piece)
     # TODO
   end
 
