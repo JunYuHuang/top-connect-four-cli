@@ -26,7 +26,7 @@
 - [x] Complete `#print_end_screen` method and test manually
 - [x] Complete `#did_player_win_horizontal?` method with tests
 - [x] Complete `#did_player_win_vertical?` method with tests
-- [ ] Complete `#did_player_win_neg_diagonal?` method with tests
+- [x] Complete `#did_player_win_neg_diagonal?` method with tests
 - [ ] Complete `#did_player_win_pos_diagonal?` method with tests
 - [x] Complete `#clear_console` method and test manually
 - [x] Complete `#print_board` method and test manually

@@ -363,5 +363,47 @@ describe Game do
       player_black = game.get_player_by_piece(:black)
       expect(game.did_player_win?(player_black)).to eql(true)
     end
+
+    it "returns false if called with a player object on a game that does not have 4 in a row in a negative diagonal" do
+      board = [
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:white, :black, :empty, :empty, :empty, :empty, :empty],
+        [:white, :white, :black, :empty, :empty, :empty, :empty],
+        [:black, :white, :white, :black, :empty, :empty, :empty],
+      ]
+      game = Game.new(board, PlayerMock)
+      player_black = game.get_player_by_piece(:black)
+      expect(game.did_player_win?(player_black)).to eql(false)
+    end
+
+    it "returns true if called with a player object on a game that has 4 in a row in a negative diagonal" do
+      board = [
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:black, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:white, :black, :empty, :empty, :empty, :empty, :empty],
+        [:white, :white, :black, :empty, :empty, :empty, :empty],
+        [:black, :white, :white, :black, :empty, :empty, :empty],
+      ]
+      game = Game.new(board, PlayerMock)
+      player_black = game.get_player_by_piece(:black)
+      expect(game.did_player_win_neg_diagonal?(player_black)).to eql(true)
+    end
+
+    it "returns true if called with a player object on a game that has 4 in a row in a negative diagonal" do
+      board = [
+        [:empty, :empty, :empty, :black, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :black, :black, :empty, :empty],
+        [:empty, :empty, :empty, :black, :black, :black, :empty],
+        [:empty, :empty, :empty, :white, :white, :white, :black],
+        [:empty, :empty, :empty, :black, :white, :black, :white],
+        [:empty, :empty, :empty, :white, :white, :white, :black],
+      ]
+      game = Game.new(board, PlayerMock)
+      player_black = game.get_player_by_piece(:black)
+      expect(game.did_player_win_neg_diagonal?(player_black)).to eql(true)
+    end
   end
 end
