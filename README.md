@@ -1,6 +1,6 @@
 # Connect Four Console Game
 
-<!-- ![Gameplay demo of one player winning the Connect Four game](/assets/connect-four-demo-win.gif) -->
+![Gameplay demo of one player winning the Connect Four game](/assets/connect-four-demo.gif)
 
 This is a console implementation of the two-player board game 'Connect Four'.
 
@@ -9,7 +9,7 @@ Game Parameters:
 - Allows 2 human players to play against each other.
 - Player 1 is always assigned the black pieces.
 - Player 2 is always assigned the white pieces.
-- The player who starts first is randomly chosen.
+- The player whose turn starts first is randomly chosen.
 
 ## Quick Start
 

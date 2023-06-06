@@ -6,7 +6,7 @@
 - [x] Complete core methods `Game` class
 - [x] Complete console output methods for `Game` class
 - [x] Update `app.rb` entry file
-- [ ] Update `README.md` with .gif demo recording
+- [x] Update `README.md` with .gif demo recording
 
 ## `Game` class TODOs
 
