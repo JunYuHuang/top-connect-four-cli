@@ -300,14 +300,7 @@ describe Game do
     end
   end
 
-  describe "#did_player_win?" do
-    it "returns false if called with a player object on a game with the wrong number of players" do
-      game = Game.new
-      game.add_player(PlayerMock)
-      player_black = game.get_player_by_piece(:black)
-      expect(game.did_player_win?(player_black)).to eql(false)
-    end
-
+  describe "#did_player_win_horizontal?" do
     it "returns false if called with a player object on a game that does not have 4 in a row horizontally" do
       board = [
         [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
@@ -319,7 +312,7 @@ describe Game do
       ]
       game = Game.new(board, PlayerMock)
       player_white = game.get_player_by_piece(:white)
-      expect(game.did_player_win?(player_white)).to eql(false)
+      expect(game.did_player_win_horizontal?(player_white)).to eql(false)
     end
 
     it "returns true if called with a player object on a game that has 4 in a row horizontally" do
@@ -333,9 +326,11 @@ describe Game do
       ]
       game = Game.new(board, PlayerMock)
       player_white = game.get_player_by_piece(:white)
-      expect(game.did_player_win?(player_white)).to eql(true)
+      expect(game.did_player_win_horizontal?(player_white)).to eql(true)
     end
+  end
 
+  describe "#did_player_win_vertical?" do
     it "returns false if called with a player object on a game that does not have 4 in a row vertically" do
       board = [
         [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
@@ -347,7 +342,7 @@ describe Game do
       ]
       game = Game.new(board, PlayerMock)
       player_black = game.get_player_by_piece(:black)
-      expect(game.did_player_win?(player_black)).to eql(false)
+      expect(game.did_player_win_vertical?(player_black)).to eql(false)
     end
 
     it "returns true if called with a player object on a game that has 4 in a row vertically" do
@@ -361,9 +356,11 @@ describe Game do
       ]
       game = Game.new(board, PlayerMock)
       player_black = game.get_player_by_piece(:black)
-      expect(game.did_player_win?(player_black)).to eql(true)
+      expect(game.did_player_win_vertical?(player_black)).to eql(true)
     end
+  end
 
+  describe "#did_player_win_neg_diagonal?" do
     it "returns false if called with a player object on a game that does not have 4 in a row in a negative diagonal" do
       board = [
         [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
@@ -375,7 +372,7 @@ describe Game do
       ]
       game = Game.new(board, PlayerMock)
       player_black = game.get_player_by_piece(:black)
-      expect(game.did_player_win?(player_black)).to eql(false)
+      expect(game.did_player_win_neg_diagonal?(player_black)).to eql(false)
     end
 
     it "returns true if called with a player object on a game that has 4 in a row in a negative diagonal" do

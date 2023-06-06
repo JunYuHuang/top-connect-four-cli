@@ -123,7 +123,35 @@ class Game
     false
   end
 
-   # negative diagonals are lines that go from top left to bottom right
+  def did_player_win_horizontal?(player)
+    return false if @players.size != @players_count
+
+    @board.each do |row|
+      count = 0
+      row.each do |cell|
+        return true if count == @line_length
+        count = cell == player.piece ? count + 1 : 0
+      end
+    end
+
+    false
+  end
+
+  def did_player_win_vertical?(player)
+    return false if @players.size != @players_count
+
+    (0...@cols).each do |col|
+      count = 0
+      (0...@rows).reverse_each do |row|
+        return true if count == @line_length
+        count = @board[row][col] == player.piece ? count + 1 : 0
+      end
+    end
+
+    false
+  end
+
+  # negative diagonals are lines that go from top left to bottom right
   def did_player_win_neg_diagonal?(player)
     piece = player.piece
 
@@ -154,6 +182,11 @@ class Game
     end
 
     false
+  end
+
+  # positive diagonals are lines that go from bottom left to top right
+  def did_player_win_pos_diagonal?(player)
+    # TODO
   end
 
   def print_board
@@ -219,39 +252,6 @@ class Game
 
   def self.get_empty_board(rows = 6, cols = 7)
     Array.new(rows) { Array.new(cols, :empty) }
-  end
-
-  def did_player_win_horizontal?(player)
-    return false if @players.size != @players_count
-
-    @board.each do |row|
-      count = 0
-      row.each do |cell|
-        return true if count == @line_length
-        count = cell == player.piece ? count + 1 : 0
-      end
-    end
-
-    false
-  end
-
-  def did_player_win_vertical?(player)
-    return false if @players.size != @players_count
-
-    (0...@cols).each do |col|
-      count = 0
-      (0...@rows).reverse_each do |row|
-        return true if count == @line_length
-        count = @board[row][col] == player.piece ? count + 1 : 0
-      end
-    end
-
-    false
-  end
-
-  # positive diagonals are lines that go from bottom left to top right
-  def did_player_win_pos_diagonal?(player)
-    # TODO
   end
 
   def clear_console
