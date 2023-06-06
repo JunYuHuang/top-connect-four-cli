@@ -180,9 +180,35 @@ class Game
     false
   end
 
-  # positive diagonals are lines that go from bottom left to top right
+  # positive diagonals are lines that go top right to bottom left
   def did_win_pos_diagonal?(piece)
-    # TODO
+    # check left / upper half of negative diagonals
+    (@cols - @line_length..@cols - 2).each do |col|
+      diag_row = 0
+      diag_col = col
+      count = 0
+      while diag_row < @rows && diag_col >= 0
+        count = @board[diag_row][diag_col] == piece ? count + 1 : 0
+        return true if count == @line_length
+        diag_row += 1
+        diag_col -= 1
+      end
+    end
+
+    # check right / lower half of negative diagonals
+    (0..@rows - @line_length).each do |row|
+      diag_row = row
+      diag_col = @cols - 1
+      count = 0
+      while diag_row < @rows && diag_col >= 0
+        count = @board[diag_row][diag_col] == piece ? count + 1 : 0
+        return true if count == @line_length
+        diag_row += 1
+        diag_col -= 1
+      end
+    end
+
+    false
   end
 
   def print_board

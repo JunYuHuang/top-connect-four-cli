@@ -396,4 +396,46 @@ describe Game do
       expect(game.did_win_neg_diagonal?(:black)).to eql(true)
     end
   end
+
+  # TODO
+  describe "#did_win_pos_diagonal?" do
+    it "returns false if called with a player object on a game that does not have 4 in a row in a positive diagonal" do
+      board = [
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :black, :white],
+        [:empty, :empty, :empty, :empty, :black, :white, :white],
+        [:empty, :empty, :empty, :black, :black, :white, :white],
+      ]
+      game = Game.new(board)
+      expect(game.did_win_pos_diagonal?(:black)).to eql(false)
+    end
+
+    it "returns true if called with a player object on a game that has 4 in a row in a positive diagonal" do
+      board = [
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :empty],
+        [:empty, :empty, :empty, :empty, :empty, :empty, :black],
+        [:empty, :empty, :empty, :empty, :empty, :black, :white],
+        [:empty, :empty, :empty, :empty, :black, :white, :white],
+        [:empty, :empty, :empty, :black, :black, :white, :white],
+      ]
+      game = Game.new(board)
+      expect(game.did_win_pos_diagonal?(:black)).to eql(true)
+    end
+
+    it "returns true if called with a player object on a game that has 4 in a row in a positive diagonal" do
+      board = [
+        [:empty, :empty, :empty, :black, :empty, :empty, :empty],
+        [:empty, :empty, :black, :black, :empty, :empty, :empty],
+        [:empty, :black, :black, :black, :empty, :empty, :empty],
+        [:black, :white, :white, :white, :empty, :empty, :empty],
+        [:white, :black, :white, :black, :empty, :empty, :empty],
+        [:black, :white, :white, :white, :empty, :empty, :empty],
+      ]
+      game = Game.new(board)
+      expect(game.did_win_pos_diagonal?(:black)).to eql(true)
+    end
+  end
 end

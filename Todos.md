@@ -4,7 +4,7 @@
 - [x] Complete `Player` class
 - [ ] Complete tests for `Game` class with `PlayerMock` test double class
 - [ ] Complete core methods `Game` class
-- [ ] Complete console output methods for `Game` class
+- [x] Complete console output methods for `Game` class
 - [ ] Update `app.rb` entry file
 - [ ] Update `README.md` with .gif demo recording
 
@@ -27,7 +27,7 @@
 - [x] Complete `#did_win_horizontal?` method with tests
 - [x] Complete `#did_win_vertical?` method with tests
 - [x] Complete `#did_win_neg_diagonal?` method with tests
-- [ ] Complete `#did_win_pos_diagonal?` method with tests
+- [x] Complete `#did_win_pos_diagonal?` method with tests
 - [x] Complete `#clear_console` method and test manually
 - [x] Complete `#print_board` method and test manually
 - [x] Complete `print_player_prompt` method and test manually
