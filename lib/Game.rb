@@ -49,21 +49,26 @@ class Game
     ))
   end
 
-  # TODO - to test manually
   def play
     return if @players.size != @players_count
 
     @current_player_piece = get_random_player.piece
 
     loop do
-      player = get_current_player
-      place_piece!(player.piece, player.get_placement)
-
-      if did_player_win?(player)
-        print_end_screen(player)
+      white_player = get_player_by_piece(:white)
+      if did_player_win?(white_player)
+        print_end_screen(white_player)
         return
       end
 
+      black_player = get_player_by_piece(:black)
+      if did_player_win?(black_player)
+        print_end_screen(black_player)
+        return
+      end
+
+      player = get_current_player
+      place_piece!(player.piece, player.get_placement)
       switch_players!
     end
   end

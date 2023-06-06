@@ -2,8 +2,8 @@
 
 - [x] Complete tests for `Player` class
 - [x] Complete `Player` class
-- [ ] Complete tests for `Game` class with `PlayerMock` test double class
-- [ ] Complete core methods `Game` class
+- [x] Complete tests for `Game` class with `PlayerMock` test double class
+- [x] Complete core methods `Game` class
 - [x] Complete console output methods for `Game` class
 - [ ] Update `app.rb` entry file
 - [ ] Update `README.md` with .gif demo recording
@@ -14,7 +14,7 @@
 - [x] Complete `::get_empty_board` method with tests
 - [x] Complete `#initialize` (constructor) method with tests
 - [x] Complete `#add_player` method with tests
-- [ ] Complete `#play` method and test manually
+- [x] Complete `#play` method and test manually
 - [x] Complete `#get_random_player` method with tests
 - [x] Complete `#get_current_player` method with tests
 - [x] Complete `#get_player_by_piece` method with tests
